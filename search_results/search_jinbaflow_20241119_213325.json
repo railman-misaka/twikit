@@ -1,0 +1,92 @@
+[
+  {
+    "user_name": "mugu ｜ AI学生",
+    "screen_name": "1108k4xi",
+    "text": "【jinbaflow 有能プロンプト】\n\nフロー組み込み時に値の出力形式の違いでPythonブロック内でエラー発生した際に使える公式YouTubeで紹介されていたプロンプトが有能なので共有。\n\n・プロンプト\n「Pythonのリスト形式で出力してください。」 https://t.co/yhiM3djKa0",
+    "created_at": "Tue Nov 19 03:34:23 +0000 2024",
+    "retweet_count": 4,
+    "like_count": 31,
+    "tweet_id": "1858715418468511826"
+  },
+  {
+    "user_name": "【公式】SHIFT AI",
+    "screen_name": "SHIFT_AI_0",
+    "text": "最新記事のご紹介！\n‐‐‐‐‐\n【ノーコードで他サービスと連携】jinbaflowの特徴や使い方を徹底解説！\n‐‐‐‐‐\n※Jinbaflowは、ノーコードで手軽に業務の自動化や効率化が図れるツールです。\n\n本記事を読むと、\n・Jinbaflowの特徴や使い方がわかる\n・連携できるサービスがわかる\n・料金体系がわかる https://t.co/g5N17fj4Jp",
+    "created_at": "Tue Nov 19 09:07:18 +0000 2024",
+    "retweet_count": 1,
+    "like_count": 12,
+    "tweet_id": "1858799198751343045"
+  },
+  {
+    "user_name": "酒井駿(さかいしゅん) | 生成AI×製造業",
+    "screen_name": "sakai_1910",
+    "text": "Jinbaflowに新しくPerplexity APIとLINE連携が追加されていたので使ってみた。15分くらいでできてやっぱりJinbaflowの強みは手軽さだと感じた。よくエラーになることに目をつぶれば、普段使うアプリとの連携が一瞬でできて凄くいい。しかも全部無料でできる。まだ試してないけどRAGも追加されたらしい https://t.co/HONAm1zGbH",
+    "created_at": "Tue Nov 19 09:31:43 +0000 2024",
+    "retweet_count": 6,
+    "like_count": 46,
+    "tweet_id": "1858805341523505504"
+  },
+  {
+    "user_name": "Shoya MATSUMORI, Ph.D. @jinbaflow",
+    "screen_name": "pineforesta",
+    "text": "公式ページよりjinbaflowのミーティングを予約されていた皆様，大変申し訳ございません．今朝方，リクエスト増加により予約ツールに不具合が発生しリンクが適切に発行できないという問題がありました．問題は現在解消されましたが，何かございましたらDM等でご連絡いただければ幸いです．",
+    "created_at": "Tue Nov 19 01:37:04 +0000 2024",
+    "retweet_count": 1,
+    "like_count": 11,
+    "tweet_id": "1858685892615152120"
+  },
+  {
+    "user_name": "SUNAO@AI駆動開発/生成AI研修",
+    "screen_name": "geaidevelop",
+    "text": "和製Difyと名高いJinbaflow が神すぎた。プロンプトによりプログラム生成が驚くほど直感的で、ノーコードでワークフロー作成が瞬く間に完了する。プログラミング知識ゼロでも、業務自動化を簡単に実現できる。Difyで挫折してしまった人も一度Jinbaflowを試してみて。 https://t.co/1oGvp7EvBf",
+    "created_at": "Mon Nov 18 20:05:24 +0000 2024",
+    "retweet_count": 1,
+    "like_count": 9,
+    "tweet_id": "1858602428922556471"
+  },
+  {
+    "user_name": "ケインコスゲ@教育とエンジニアの人｜G's ACADEMY 東京 DEV 0期&25期",
+    "screen_name": "keinkosuge",
+    "text": "jinbaflow試してみました。今回試したワークフローの内容は以下の通り。\n・Webサイトのコンテンツをスクレイピングで取得\n・Pythonで整形\n・Notionページに転記\n\n0から始めて30分ほどで最低限の理解をしてスクレイピング＆転記成功！\nPythonコードもプロンプトで良い感じに作成してくれるのがポイント https://t.co/3kKcgHXTvA",
+    "created_at": "Mon Nov 18 15:05:26 +0000 2024",
+    "retweet_count": 1,
+    "like_count": 17,
+    "tweet_id": "1858526936873701654"
+  },
+  {
+    "user_name": "たま_システムエンジニア💻AI活用中",
+    "screen_name": "tama_itengineer",
+    "text": "Dify離れてJinbaflowに浮気しようかなぁ～\n登録して作ってみたnoteは書こうとしてます← https://t.co/ByRhxo8LRH",
+    "created_at": "Mon Nov 18 20:50:56 +0000 2024",
+    "retweet_count": 0,
+    "like_count": 4,
+    "tweet_id": "1858613885936492879"
+  },
+  {
+    "user_name": "shimayuz@AIクリエイター",
+    "screen_name": "Shimayus",
+    "text": "まじでヤバいツールきた。\n@jinbaflow_JP が出してきたAIワークフローツールは何がすごいって、そのテンプレートの量の多さ。\nみんなが知りたいYoutube要約の書き起こしやPDFのjsonコンバータなどすぐに使える。\n今キャンペーン中で、すぐ使わないと損する👇 https://t.co/b9DEYuVQ4b",
+    "created_at": "Sun Nov 17 23:31:11 +0000 2024",
+    "retweet_count": 13,
+    "like_count": 182,
+    "tweet_id": "1858291825016291811"
+  },
+  {
+    "user_name": "てる@YouTube×AIの活用術{AI沼らせ屋}",
+    "screen_name": "rute1203d",
+    "text": "Difyより親切なJinbaflowさん\n複数URLからYouTube文字起こし実現\n\n100タスク実行まで１ヶ月無料な模様\nwebhook化できるので便利にだ https://t.co/CAfxpY483F",
+    "created_at": "Sun Nov 17 13:27:09 +0000 2024",
+    "retweet_count": 10,
+    "like_count": 99,
+    "tweet_id": "1858139814664753275"
+  },
+  {
+    "user_name": "KAJI | 梶谷健人",
+    "screen_name": "kajikent",
+    "text": "にわかにAI界隈で話題になっている和製Dify的なAIノーコードツール「Jinbaflow」試してみたけど、めっちゃ良い！\n\nSpreadSheetに記載したSF作品についてPerplexityのAPIで調べさせてSheetに自動記入させるフローを作ってみたら簡単にできた！\nPythonコードのAI生成機能もついてるので自由度が高い。 https://t.co/NRldxT9Gyy",
+    "created_at": "Sun Nov 17 09:09:40 +0000 2024",
+    "retweet_count": 62,
+    "like_count": 526,
+    "tweet_id": "1858075017369813304"
+  }
+]
