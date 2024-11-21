@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 import asyncio
 from collections import Counter
+import pandas as pd
 
 class TwitterProfileAnalyzer:
     def __init__(self):
@@ -162,6 +163,72 @@ class TwitterProfileAnalyzer:
         except Exception as e:
             print(f"保存エラー: {e}")
             return None
+        
+    def save_to_excel(self, frequent_repliers_data, target_screen_name):
+        """分析結果をExcelファイルとして保存"""
+        try:
+            # データフレーム用のリストを作成
+            rows = []
+            for user_data in frequent_repliers_data:
+                profile = user_data['profile']
+                tweets = user_data['recent_tweets']
+                
+                # 最新のツイート3件を結合
+                recent_tweets_text = "\n".join(
+                    [tweet['text'] for tweet in tweets[:3]]
+                ) if tweets else ""
+                
+                # 1行のデータとして整形
+                row = {
+                    '分析対象ユーザー': target_screen_name,
+                    '分析日時': datetime.now().strftime("%Y-%m-%d %H:%M"),
+                    'ユーザー名': profile['name'],
+                    'ユーザーID': f"@{profile['screen_name']}",
+                    'プロフィール文': profile['description'],
+                    'アカウント作成日': profile['created_at'],
+                    'リプライ数': user_data['reply_count'],
+                    'フォロワー数': profile['followers_count'],
+                    'フォロー数': profile['following_count'],
+                    'ツイート数': profile['tweets_count'],
+                    '場所': profile['location'],
+                    'プロフィール画像URL': profile['profile_image_url'],
+                    'アカウントURL': f"https://twitter.com/{profile['screen_name']}",
+                    '最近のツイート': recent_tweets_text
+                }
+                rows.append(row)
+            
+            # DataFrameを作成
+            df = pd.DataFrame(rows)
+            
+            # Excelファイル名を生成
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            excel_file = f"{self.results_dir}/リプライ分析_{target_screen_name}_{timestamp}.xlsx"
+            
+            # Excelファイルとして保存
+            with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
+                df.to_excel(writer, sheet_name='リプライ分析結果', index=False)
+                
+                # 列幅の自動調整
+                worksheet = writer.sheets['リプライ分析結果']
+                for idx, col in enumerate(df.columns):
+                    max_length = max(
+                        df[col].astype(str).apply(len).max(),
+                        len(str(col))
+                    )
+                    # 最大幅を50文字に制限
+                    adjusted_width = min(max_length + 2, 50)
+                    worksheet.column_dimensions[chr(65 + idx)].width = adjusted_width
+                
+                # 行の高さを調整（最近のツイート用）
+                for row in range(2, len(df) + 2):  # Excelは1始まりでヘッダーがあるため+2
+                    worksheet.row_dimensions[row].height = 60
+
+            print(f"\nExcelファイルを保存しました: {excel_file}")
+            return excel_file
+
+        except Exception as e:
+            print(f"Excelファイルの保存中にエラーが発生しました: {e}")
+            return None
 
 async def main():
     analyzer = TwitterProfileAnalyzer()
@@ -229,7 +296,8 @@ async def main():
 
     # 結果を保存
     if frequent_repliers_data:
-        analyzer.save_results(frequent_repliers_data, target_user)
+        analyzer.save_results(frequent_repliers_data, target_user)  # JSON形式で保存
+        analyzer.save_to_excel(frequent_repliers_data, target_user)  # Excel形式で保存
 
 if __name__ == "__main__":
     asyncio.run(main())

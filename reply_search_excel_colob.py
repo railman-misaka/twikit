@@ -1,34 +1,24 @@
-from twikit import Client
-import json
-import os
-from datetime import datetime
-import asyncio
-from collections import Counter
 
+# TwitterProfileAnalyzerクラスの定義
 class TwitterProfileAnalyzer:
     def __init__(self):
-        # Twitterクライアントを英語（米国）設定で初期化
         self.client = Client(language='en-US')
-        # 認証クッキーのパス
-        self.cookie_path = "twitter_json/cookie_edit.json"
-        # 結果を保存するディレクトリ
-        self.results_dir = "profile_results"
-        # 結果保存用ディレクトリが存在しない場合は作成
-        os.makedirs(self.results_dir, exist_ok=True)
+        self.cookie_path = f"{COOKIE_DIR}/cookie_edit.json"
+        self.results_dir = RESULTS_DIR
 
     async def setup(self):
-        """クッキーを使用して認証を設定する"""
         try:
-            # クッキーファイルを開き、JSONデータを読み込む
             with open(self.cookie_path, 'r', encoding='utf-8') as file:
                 cookies = json.load(file)
-            # クライアントにクッキーを設定
             self.client.set_cookies(cookies)
             print("認証に成功しました！")
             return True
         except Exception as e:
             print(f"認証エラー: {e}")
             return False
+
+    # 既存のメソッドをここにコピー
+    # analyze_user_replies, get_user_profile, get_user_tweets, save_results, save_to_excel
 
     async def analyze_user_replies(self, screen_name, tweets_to_analyze=200):
         """指定したユーザーのツイートから、リプライを分析する"""
@@ -162,74 +152,132 @@ class TwitterProfileAnalyzer:
         except Exception as e:
             print(f"保存エラー: {e}")
             return None
-
-async def main():
-    analyzer = TwitterProfileAnalyzer()
-    
-    if not await analyzer.setup():
-        return
-
-    # 分析対象のユーザー名を指定（@を除いた名前）
-    target_user = "sora19ai"
-    min_replies = 3  # 最小リプライ数の閾値
-    tweets_to_analyze = 200  # 分析するツイート数
-
-    print(f"\n{target_user}のリプライを分析します...")
-    print(f"- 分析対象ツイート数: {tweets_to_analyze}")
-    print(f"- 最小リプライ数: {min_replies}")
-
-    # リプライを分析
-    reply_counter, reply_users = await analyzer.analyze_user_replies(target_user, tweets_to_analyze)
-    
-    if not reply_counter:
-        print("\nリプライが見つかりませんでした。")
-        return
-
-    # 頻繁にリプライしているユーザーの情報を収集
-    frequent_repliers_data = []
-    print("\nリプライの多いユーザーの情報を収集中...")
-    
-    for screen_name, reply_count in reply_counter.most_common():
-        if reply_count >= min_replies and screen_name in reply_users:
-            try:
-                user = reply_users[screen_name]
-                profile_data = await analyzer.get_user_profile(user)
-                tweets = await analyzer.get_user_tweets(user, count=3)
-                
-                if profile_data:
-                    user_data = {
-                        'profile': profile_data,
-                        'reply_count': reply_count,
-                        'recent_tweets': tweets
-                    }
-                    frequent_repliers_data.append(user_data)
-                    print(f"@{screen_name}の情報を取得しました（リプライ数: {reply_count}）")
-            except Exception as e:
-                print(f"@{screen_name}の情報取得に失敗: {e}")
-                continue
-    
-    # 結果を表示
-    if not frequent_repliers_data:
-        print(f"\n{min_replies}回以上リプライしているユーザーは見つかりませんでした。")
-        return
-
-    print(f"\n{min_replies}回以上リプライしているユーザー ({len(frequent_repliers_data)}人):")
-    for user_data in frequent_repliers_data:
-        profile = user_data['profile']
-        print("\n-------------------")
-        print(f"名前: {profile['name']} (@{profile['screen_name']})")
-        print(f"プロフィール: {profile['description']}")
-        print(f"リプライ数: {user_data['reply_count']}")
-        print(f"フォロワー: {profile['followers_count']}, フォロー中: {profile['following_count']}")
         
-        if user_data['recent_tweets']:
-            print("\n最近のツイート:")
-            for tweet in user_data['recent_tweets']:
-                print(f"- {tweet['text']}")
+    def save_to_excel(self, frequent_repliers_data, target_screen_name):
+        """分析結果をExcelファイルとして保存"""
+        try:
+            # データフレーム用のリストを作成
+            rows = []
+            for user_data in frequent_repliers_data:
+                profile = user_data['profile']
+                tweets = user_data['recent_tweets']
+                
+                # 最新のツイート3件を結合
+                recent_tweets_text = "\n".join(
+                    [tweet['text'] for tweet in tweets[:3]]
+                ) if tweets else ""
+                
+                # 1行のデータとして整形
+                row = {
+                    '分析対象ユーザー': target_screen_name,
+                    '分析日時': datetime.now().strftime("%Y-%m-%d %H:%M"),
+                    'ユーザー名': profile['name'],
+                    'ユーザーID': f"@{profile['screen_name']}",
+                    'プロフィール文': profile['description'],
+                    'アカウント作成日': profile['created_at'],
+                    'リプライ数': user_data['reply_count'],
+                    'フォロワー数': profile['followers_count'],
+                    'フォロー数': profile['following_count'],
+                    'ツイート数': profile['tweets_count'],
+                    '場所': profile['location'],
+                    'プロフィール画像URL': profile['profile_image_url'],
+                    'アカウントURL': f"https://twitter.com/{profile['screen_name']}",
+                    '最近のツイート': recent_tweets_text
+                }
+                rows.append(row)
+            
+            # DataFrameを作成
+            df = pd.DataFrame(rows)
+            
+            # Excelファイル名を生成
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            excel_file = f"{self.results_dir}/リプライ分析_{target_screen_name}_{timestamp}.xlsx"
+            
+            # Excelファイルとして保存
+            with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
+                df.to_excel(writer, sheet_name='リプライ分析結果', index=False)
+                
+                # 列幅の自動調整
+                worksheet = writer.sheets['リプライ分析結果']
+                for idx, col in enumerate(df.columns):
+                    max_length = max(
+                        df[col].astype(str).apply(len).max(),
+                        len(str(col))
+                    )
+                    # 最大幅を50文字に制限
+                    adjusted_width = min(max_length + 2, 50)
+                    worksheet.column_dimensions[chr(65 + idx)].width = adjusted_width
+                
+                # 行の高さを調整（最近のツイート用）
+                for row in range(2, len(df) + 2):  # Excelは1始まりでヘッダーがあるため+2
+                    worksheet.row_dimensions[row].height = 60
 
-    # 結果を保存
-    if frequent_repliers_data:
-        analyzer.save_results(frequent_repliers_data, target_user)
+            print(f"\nExcelファイルを保存しました: {excel_file}")
+            return excel_file
 
-if __name__ == "__main__":
-    asyncio.run(main())
+        except Exception as e:
+            print(f"Excelファイルの保存中にエラーが発生しました: {e}")
+            return None
+
+
+    async def run_analysis():
+        analyzer = TwitterProfileAnalyzer()
+        
+        if not await analyzer.setup():
+            return
+
+        # ユーザー入力を対話的に取得
+        target_user = input("分析対象のユーザー名を入力してください（@を除く）: ")
+        min_replies = int(input("最小リプライ数を入力してください（例: 3）: "))
+        tweets_to_analyze = int(input("分析するツイート数を入力してください（例: 200）: "))
+
+        print(f"\n{target_user}のリプライを分析します...")
+        print(f"- 分析対象ツイート数: {tweets_to_analyze}")
+        print(f"- 最小リプライ数: {min_replies}")
+
+        # リプライを分析
+        reply_counter, reply_users = await analyzer.analyze_user_replies(target_user, tweets_to_analyze)
+        
+        if not reply_counter:
+            print("\nリプライが見つかりませんでした。")
+            return
+
+        # 頻繁にリプライしているユーザーの情報を収集
+        frequent_repliers_data = []
+        print("\nリプライの多いユーザーの情報を収集中...")
+        
+        for screen_name, reply_count in reply_counter.most_common():
+            if reply_count >= min_replies and screen_name in reply_users:
+                try:
+                    user = reply_users[screen_name]
+                    profile_data = await analyzer.get_user_profile(user)
+                    tweets = await analyzer.get_user_tweets(user, count=3)
+                    
+                    if profile_data:
+                        user_data = {
+                            'profile': profile_data,
+                            'reply_count': reply_count,
+                            'recent_tweets': tweets
+                        }
+                        frequent_repliers_data.append(user_data)
+                        print(f"@{screen_name}の情報を取得しました（リプライ数: {reply_count}）")
+                except Exception as e:
+                    print(f"@{screen_name}の情報取得に失敗: {e}")
+                    continue
+
+        # 結果を保存
+        if frequent_repliers_data:
+            analyzer.save_results(frequent_repliers_data, target_user)
+            analyzer.save_to_excel(frequent_repliers_data, target_user)
+            print("\n分析が完了しました！")
+        else:
+            print("\n分析対象となるユーザーが見つかりませんでした。")
+
+# Google Colab用の非同期
+
+# Google Colab用の実行コード
+from google.colab import output
+output.enable_custom_widget_manager()
+
+# 分析の実行
+await run_analysis()

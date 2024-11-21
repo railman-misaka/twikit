@@ -1,0 +1,59 @@
+[
+  {
+    "user": {
+      "user_id": "1660554754769006593",
+      "name": "PyThon! 🐍🌕",
+      "screen_name": "wlife7286",
+      "profile_description": "A Thread writer,A project hunter & Web3 Enthusiast WAGMI 🚀",
+      "profile_url": "https://twitter.com/wlife7286",
+      "followers_count": 154,
+      "following_count": 498,
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1845191541909798932/pH5wYNyx_normal.jpg",
+      "location": "🇨🇦🇺🇸"
+    },
+    "tweet": {
+      "tweet_id": "1859207914541473803",
+      "tweet_url": "https://twitter.com/wlife7286/status/1859207914541473803",
+      "text": "@apemanonape We stay locked in for the bananas staying for the fun 🍌🦍",
+      "created_at": "Wed Nov 20 12:11:23 +0000 2024",
+      "retweet_count": 0,
+      "like_count": 0,
+      "reply_count": 0,
+      "is_retweet": false,
+      "is_quote": false,
+      "language": "en"
+    },
+    "keyword_locations": [
+      "user_name"
+    ]
+  },
+  {
+    "user": {
+      "user_id": "39967843",
+      "name": "Willian Silva",
+      "screen_name": "WillianBR",
+      "profile_description": "IT Analyst, Software Developer (C/C++, Java, COBOL, Python,LUA, PHP, LDAP, SSO).",
+      "profile_url": "https://twitter.com/WillianBR",
+      "followers_count": 680,
+      "following_count": 2079,
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1504759281316515846/Jz6WD0zw_normal.jpg",
+      "location": ""
+    },
+    "tweet": {
+      "tweet_id": "1859207911651581954",
+      "tweet_url": "https://twitter.com/WillianBR/status/1859207911651581954",
+      "text": "@kazhian @sahnlam As Python is written in C/C++ it can call native libraries from the running OS.  If you want to call a specific library, you should use the module \"ctypes\". You can also write your own libraries to be called from Python.",
+      "created_at": "Wed Nov 20 12:11:23 +0000 2024",
+      "retweet_count": 0,
+      "like_count": 0,
+      "reply_count": 0,
+      "is_retweet": false,
+      "is_quote": false,
+      "language": "en"
+    },
+    "keyword_locations": [
+      "tweet_text",
+      "profile_description"
+    ]
+  }
+]

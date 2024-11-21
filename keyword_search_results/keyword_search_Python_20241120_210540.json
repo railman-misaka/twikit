@@ -1,0 +1,86 @@
+[
+  {
+    "user": {
+      "user_id": "1675888265835040768",
+      "name": "ₕₐₘₚₜₒₙ — e/acc",
+      "screen_name": "hamptonism",
+      "profile_description": "quantitative finance │ defense tech │ ai/ml. •powered by @hamptonLLM",
+      "profile_url": "https://twitter.com/hamptonism",
+      "followers_count": 87073,
+      "following_count": 696,
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1858131209680793600/RryDaXje_normal.jpg",
+      "location": "New York, USA"
+    },
+    "tweet": {
+      "tweet_id": "1857841826406764602",
+      "tweet_url": "https://twitter.com/hamptonism/status/1857841826406764602",
+      "text": "Python Cheat Sheet: https://t.co/PeBaOgkU3g",
+      "created_at": "Sat Nov 16 17:43:03 +0000 2024",
+      "retweet_count": 459,
+      "like_count": 4017,
+      "reply_count": 12,
+      "is_retweet": false,
+      "is_quote": false,
+      "language": "en"
+    },
+    "keyword_locations": [
+      "tweet_text"
+    ]
+  },
+  {
+    "user": {
+      "user_id": "1453648680284835845",
+      "name": "Rony",
+      "screen_name": "Ronycoder",
+      "profile_description": "Sharing insights on AI, tech, and prompts  | Ghostwriter ✍️ | DM for paid promotions 💌",
+      "profile_url": "https://twitter.com/Ronycoder",
+      "followers_count": 21540,
+      "following_count": 124,
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1845816326356455431/WLMqJi_f_normal.jpg",
+      "location": "Code "
+    },
+    "tweet": {
+      "tweet_id": "1857759347658432952",
+      "tweet_url": "https://twitter.com/Ronycoder/status/1857759347658432952",
+      "text": "PYTHON is difficult to learn, but not anymore!\n\nIntroducing \"The Ultimate Python ebook \"PDF.\n\nYou will get:\n\n• 74+ pages cheatsheet\n• Save 100+ hours on research\n\nAnd for 48 hrs, it's 100% FREE!\n\nTo get it, just:\n\n1. Like &amp; RT\n2. Reply \" Python\"\n3. Follow @Ronycoder [MUST] https://t.co/mrF4nnwGHu",
+      "created_at": "Sat Nov 16 12:15:18 +0000 2024",
+      "retweet_count": 1403,
+      "like_count": 4527,
+      "reply_count": 1368,
+      "is_retweet": false,
+      "is_quote": false,
+      "language": "en"
+    },
+    "keyword_locations": [
+      "tweet_text"
+    ]
+  },
+  {
+    "user": {
+      "user_id": "1723426647431602176",
+      "name": "Manish Kumar Shah",
+      "screen_name": "manishkumar_dev",
+      "profile_description": "235K+ LinkedIn • Digital entrepreneur sharing insights on AI, tech tools, Roadmaps, Free Courses & Notes • 150K+ Instagram & Telegram • DM for Collaboration ✨✉️",
+      "profile_url": "https://twitter.com/manishkumar_dev",
+      "followers_count": 22659,
+      "following_count": 420,
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1723436370243547136/k2t5Xbam_normal.jpg",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "tweet": {
+      "tweet_id": "1857383963188240880",
+      "tweet_url": "https://twitter.com/manishkumar_dev/status/1857383963188240880",
+      "text": "Free Computer Science Certifications to try in 2025:\n\n🔸GIT\nhttps://t.co/WXaYQWhbuP\n\n🔸Python\nhttps://t.co/BziurQPZUV\n\n🔸SQL\nhttps://t.co/ZG5ldQUHAf\n\n🔸DSA\nhttps://t.co/2pNYfCSAHl\n\n🔸Java\nhttps://t.co/rdnWTCfz9c\n\n🔸JavaScript\nhttps://t.co/lMQLGj97xq\n\n🔸C\nhttps://t.co/QSqKs2szaZ https://t.co/xg9xCfbemR",
+      "created_at": "Fri Nov 15 11:23:40 +0000 2024",
+      "retweet_count": 330,
+      "like_count": 1134,
+      "reply_count": 41,
+      "is_retweet": false,
+      "is_quote": false,
+      "language": "en"
+    },
+    "keyword_locations": [
+      "tweet_text"
+    ]
+  }
+]
